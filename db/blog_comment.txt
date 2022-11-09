@@ -1,0 +1,3 @@
+"id"	"name"	"email"	"comment"	"active"	"created_date"	"post_id"
+"1"	"Hamed"	"hamed3dart@gmail.com"	"Hello World!"	"0"	"8/9/2022 16:41:34.429494"	"2"
+"2"	"Hamed"	"hamed3dart@gmail.com"	"Hello World 2"	"1"	"8/9/2022 16:42:40.54096"	"2"

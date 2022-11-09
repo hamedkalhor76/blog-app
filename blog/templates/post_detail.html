@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    {{ post.title }}
+{% endblock %}
+
+{% block content %}
+    <div class="row tm-row">
+        <div class="col-12">
+            <hr class="tm-hr-primary tm-mb-55">
+            <!-- Video player 1422x800 -->
+            <img src="/{{ post.image }}/" width="954" height="535" alt="Image" class="img-fluid mb-4">
+        </div>
+    </div>
+    <div class="row tm-row">
+        <div class="col-lg-8 tm-post-col">
+            <div class="tm-post-full">
+                <div class="mb-4">
+                    <h2 class="pt-2 tm-color-primary tm-post-title">{{ post.title }}</h2>
+                    <p class="tm-mb-40">{{ post.created_date.year }}/{{ post.created_date.month }}/{{ post.created_date.day }}
+                        posted by {{ post.author }}</p>
+                    <p>
+                        {{ post.body }}
+                    </p>
+                    <p>
+                        Duis pretium efficitur nunc. Mauris vehicula nibh nisi. Curabitur gravida neque
+                        dignissim, aliquet nulla sed, condimentum nulla. Pellentesque id venenatis
+                        quam, id cursus velit. Fusce semper tortor ac metus iaculis varius. Praesent
+                        aliquam ex vel lectus ornare tristique. Nunc et eros quis enim feugiat tincidunt
+                        et vitae dui.
+                    </p>
+                    <span class="d-block text-right tm-color-primary">
+                        {{ post.tags.all|join:", " }}
+                    </span>
+                </div>
+
+                <!-- Comments -->
+                <div>
+                    <h2 class="tm-color-primary tm-post-title">Comments</h2>
+                    <hr class="tm-hr-primary tm-mb-45">
+                    {% block comment %}
+                        {% for comment in post.active_comment %}
+                            <div class="tm-comment tm-mb-45">
+                                <figure class="tm-comment-figure">
+                                    <img src="{% static '/images/user.png' %}" width="64" alt="Image"
+                                         class="mb-2 rounded-circle img-thumbnail">
+                                    <figcaption class="tm-color-primary text-center">{{ comment.name|capfirst }}</figcaption>
+                                </figure>
+                                <div>
+                                    <p>
+                                        {{ comment.comment }}
+                                    </p>
+                                    <div class="d-flex justify-content-between">
+                                        <span class="tm-color-primary">{{ comment.created_date.year }}/{{ comment.created_date.month }}/{{ comment.created_date.day }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endblock %}
+                    {% if new_comment %}
+                        <div class="alert alert-success pb-0">
+                            <p class="text-success">Your comment is awaiting approval</p>
+                        </div>
+                    {% else %}
+                        <form method="post" class="mb-5 tm-comment-form">
+                            <h2 class="tm-color-primary tm-post-title mb-4">Your comment</h2>
+                            <div class="mb-4">
+                                <span>Name:</span>
+                                <input class="form-control" name="name" type="text">
+                            </div>
+                            <div class="mb-4">
+                                <span>Email:</span>
+                                <input class="form-control" name="email" type="text">
+                            </div>
+                            <div class="mb-4">
+                                <span>Message:</span>
+                                <textarea class="form-control" name="comment" rows="6"></textarea>
+                            </div>
+                            {% csrf_token %}
+                            <div class="text-right">
+                                <input type="submit" class="tm-btn tm-btn-primary tm-btn-small" value="Submit">
+                            </div>
+                        </form>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <aside class="col-lg-4 tm-aside-col">
+            <div class="tm-post-sidebar">
+                <hr class="mb-3 tm-hr-primary">
+                <h2 class="mb-4 tm-post-title tm-color-primary">Categories</h2>
+                <ul class="tm-mb-75 pl-5 tm-category-list">
+                    <li><a href="#" class="tm-color-primary">Visual Designs</a></li>
+                    <li><a href="#" class="tm-color-primary">Travel Events</a></li>
+                    <li><a href="#" class="tm-color-primary">Web Development</a></li>
+                    <li><a href="#" class="tm-color-primary">Video and Audio</a></li>
+                    <li><a href="#" class="tm-color-primary">Etiam auctor ac arcu</a></li>
+                    <li><a href="#" class="tm-color-primary">Sed im justo diam</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+{% endblock %}

@@ -1,0 +1,15 @@
+            <div class="row tm-row tm-mt-100 tm-mb-75">
+                <div class="tm-prev-next-wrapper">
+                    {% if page_obj.has_previous %}
+                        <a href="?page=1" class="font-weight-bold">&laquo; first</a>
+                        <a href="?page={{ page_obj.previous_page_number }}" class="tm-btn tm-btn-primary">prev</a>
+                    {% endif %}
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}" class="tm-btn tm-btn-primary">next</a>
+                        <a href="?page={{ page_obj.paginator.num_pages }}" class="font-weight-bold">last &raquo;</a>
+                    {% endif %}
+                </div>
+                <div class="tm-paging-wrapper">
+                    <span class="d-inline-block mr-3">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.</span>
+                </div>
+            </div>

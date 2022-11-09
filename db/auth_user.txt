@@ -1,0 +1,2 @@
+"id"	"password"	"last_login"	"is_superuser"	"username"	"first_name"	"last_name"	"email"	"is_staff"	"is_active"	"date_joined"
+"1"	"pbkdf2_sha256$390000$IbSPmPjveI0g8RXlOHb7sB$uY07yahJF/3tZdFaEf7xmgGjcOpOxc2udNamRcPDs+4="	"9/9/2022 10:49:15.689326"	"1"	"admin"	"first user"	""	""	"1"	"1"	"28/8/2022 15:24:35"
