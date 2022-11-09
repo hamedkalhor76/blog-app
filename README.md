@@ -1,5 +1,5 @@
 # blog-app
-This is a blog applicatioin created by django freamwork and python
+This is a blog applicatioin created by django freamwork and python.
 
 Some features of this projetc:
 1. Adding post
